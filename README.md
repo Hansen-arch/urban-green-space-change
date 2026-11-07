@@ -125,6 +125,28 @@ Part of the 2019→2025 increase is recovery from a dry, fire-affected 2019 in R
 sustained greening trend; the 2022→2025 drop of about 0.025 is the more useful signal for
 present-day conditions.
 
+## How much does the window choice matter?
+
+The main comparison uses single calendar years, so it carries the caveat below about
+annual rather than seasonally matched windows. As a check, the same idea was run on
+Landsat 8/9, whose archive is long enough to compare 2016-2018 with 2022-2024 under two
+different windows over the same city boundary (`src/landsat_seasonality.py`):
+
+| Window | Net change | Median | Area losing | Area gaining |
+|---|---|---|---|---|
+| June to September | -0.004 | -0.004 | 29.0% | 27.4% |
+| Full year | -0.008 | -0.004 | 29.5% | 25.0% |
+
+The median change is identical and the loss share moves by half a percentage point, so
+the loss signal survives the window choice. The net mean roughly doubles between the two
+windows, which is a reminder that a mean of a bimodal change distribution is a weak
+summary: it is the balance of two large opposing areas, not a typical pixel.
+
+These are Landsat numbers, not Sentinel-2 numbers, so they do not validate the headline
+above. What they do show is that both windows come out slightly negative against a
+2016-2018 baseline, which fits the 2019 caveat further up rather than a sustained
+greening trend: a low, fire-affected 2019 inflates any comparison that starts there.
+
 **Urban expansion shows up as stability, not loss.** The built-up core already had low NDVI in
 2019, so converting it further registers as stable-low rather than as change. NDVI difference
 detects *change* in greenness; it does not inventory current land cover.
@@ -141,7 +163,8 @@ detects *change* in greenness; it does not inventory current land cover.
 - **NDVI saturates in dense canopy** (above roughly 0.8), so additional biomass under closed
   forest is under-represented; the gain class is biased toward low-to-medium cover.
 - **Annual, not seasonally matched, windows.** Pekanbaru is near the equator so seasonality is
-  weak, but haze events are not seasonal. See the 2019 caveat above.
+  weak, but haze events are not seasonal. See the 2019 caveat above, and the Landsat window
+  check for how much this moves the numbers.
 - **Threshold dependence.** Class areas move with the threshold: ±0.05 gives 9,972 ha loss and
   27,332 ha gain, ±0.15 gives 4,522 ha and 7,086 ha. The sign of the net result does not change.
 - **Boundary.** FAO GAUL 2025 is simplified and is an administrative boundary, not a functional
@@ -153,7 +176,8 @@ detects *change* in greenness; it does not inventory current land cover.
 ```bash
 conda activate geo          # earthengine-api, geopandas, rasterio, matplotlib
 python src/run_analysis.py  # composites, stats, GeoTIFFs   (~4 min, needs EE auth)
-python src/make_figures.py  # the three figures
+python src/make_figures.py  # the six figures
+python src/landsat_seasonality.py  # optional seasonal-window check (~2 min)
 ```
 
 Requires a one-time `earthengine authenticate` and a Google Cloud project in
@@ -169,9 +193,11 @@ Requires a one-time `earthengine authenticate` and a Google Cloud project in
 | `src/run_analysis.py` | Pipeline, `reduceRegion` statistics, raster download |
 | `src/landcover.py` | WorldCover loading, class coding, cross-tab parsing |
 | `src/make_figures.py` | The six figures |
+| `src/landsat_seasonality.py` | Landsat cross-sensor check of the seasonal window |
 | `outputs/data/stats.json` | Every headline number, plus threshold sensitivity and attribution |
 | `outputs/data/area_summary.csv` | Loss / stable / gain areas |
 | `outputs/data/landcover_attribution.csv` | Those areas split by land-cover class |
+| `outputs/data/landsat_seasonality.csv` | Net change under two seasonal windows |
 | `outputs/data/landcover_worldcover.tif` | WorldCover classes (1–8), 20 m, EPSG:32647 |
 | `outputs/data/ndvi_composites.tif` | NDVI for both periods, 20 m, EPSG:32647 |
 | `outputs/data/ndvi_change.tif` | ΔNDVI plus the `analysis_mask` band |

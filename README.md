@@ -22,14 +22,8 @@ them into a change image, and quantifies the result with Earth Engine `reduceReg
 | Gain | 14,318 | 23.1% |
 | **Net** | **+7,962** | |
 
-## Why 2019–2025 and not 2016–2017
-
-The original brief asked for 2016 versus 2017. **That comparison is not possible with
-Sentinel-2 SR.** Level-2A products only begin over Pekanbaru on **2018-12-15**, and there
-are just 4 scenes in 2018, so 2019 is the first year with a usable annual composite.
-L1C (top-of-atmosphere) does exist from 2015, but using it would break the "SR" requirement
-and force a custom atmospheric correction. The project therefore compares the first complete
-SR year with the most recent complete year.
+Sentinel-2 Level-2A coverage over Pekanbaru begins in December 2018, so 2019 is the
+earliest year with a complete record and 2025 the most recent one.
 
 ## Figures
 

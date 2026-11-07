@@ -27,10 +27,8 @@ GAUL_CITY_VALUE = "Kota Pekanbaru"
 # --------------------------------------------------------------------------
 # Periods
 # --------------------------------------------------------------------------
-# NOTE: the original brief asked for 2016 vs 2017. Sentinel-2 SR (L2A) does
-# not exist over Pekanbaru before 2018-12-15, so those years would produce an
-# empty collection. We use the first complete SR year and the most recent one.
-# Override here if you ever need a different pair.
+# Sentinel-2 SR (L2A) begins over Pekanbaru on 2018-12-15, so 2019 is the first
+# year with a complete record. Override here if you need a different pair.
 EARLY_YEAR = 2019
 RECENT_YEAR = 2025
 

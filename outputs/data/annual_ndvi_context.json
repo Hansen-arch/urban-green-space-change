@@ -1,0 +1,37 @@
+{
+  "scale_m": 40,
+  "crs": "EPSG:32647",
+  "cloud_mask": "SCL in [4, 5, 6, 11]",
+  "min_observations": 0,
+  "note": "Yearly median-composite mean NDVI. Same SCL mask as the headline analysis but no minimum-observation or permanent-water filter, so these values are a context check and are not comparable one-for-one with the period means in stats.json.",
+  "years": {
+    "2019": {
+      "n_scenes_used": 43,
+      "mean_ndvi": 0.5723347968821678
+    },
+    "2020": {
+      "n_scenes_used": 34,
+      "mean_ndvi": 0.5868456244258348
+    },
+    "2021": {
+      "n_scenes_used": 40,
+      "mean_ndvi": 0.611575639493113
+    },
+    "2022": {
+      "n_scenes_used": 26,
+      "mean_ndvi": 0.6242853114682227
+    },
+    "2023": {
+      "n_scenes_used": 32,
+      "mean_ndvi": 0.5976402788984936
+    },
+    "2024": {
+      "n_scenes_used": 33,
+      "mean_ndvi": 0.6035165505528052
+    },
+    "2025": {
+      "n_scenes_used": 39,
+      "mean_ndvi": 0.599511098552838
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "city": "Kota Pekanbaru",
+    "gaul_asset": "FAO/GAUL/2025/level2",
+    "aoi_field": "GAUL2_NAME = Kota Pekanbaru",
+    "collection": "COPERNICUS/S2_SR_HARMONIZED",
+    "crs": "EPSG:32647",
+    "scale_m": 20,
+    "cloud_mask": "SCL in [4, 5, 6, 11]",
+    "max_cloudy_pixel_pct": 80,
+    "change_threshold": 0.1,
+    "water_fraction": 0.5,
+    "min_observations": 5,
+    "gee_project": "loyal-aileron-473318-c6"
+  },
+  "city_area_ha": 62884.35938581701,
+  "periods": {
+    "early": {
+      "label": "2019",
+      "start": "2019-01-01",
+      "end": "2020-01-01",
+      "n_scenes_aoi": 73,
+      "n_scenes_used": 43,
+      "mean_ndvi": 0.5763291258571124,
+      "median_ndvi": 0.6680410187925456,
+      "std_ndvi": 0.21326675233832196,
+      "min_ndvi": -0.49531614780426025,
+      "max_ndvi": 0.8752226233482361,
+      "n_pixels": 1557678
+    },
+    "recent": {
+      "label": "2025",
+      "start": "2025-01-01",
+      "end": "2026-01-01",
+      "n_scenes_aoi": 85,
+      "n_scenes_used": 39,
+      "mean_ndvi": 0.6045097544722402,
+      "median_ndvi": 0.7070525936425796,
+      "std_ndvi": 0.23170534449396488,
+      "min_ndvi": -0.40408435463905334,
+      "max_ndvi": 0.8919025659561157,
+      "n_pixels": 1557678
+    }
+  },
+  "change": {
+    "mean": 0.028180628615127636,
+    "median": 0.0351513182726312,
+    "std": 0.13293612006130054,
+    "min": -1.0277478992938995,
+    "max": 0.8785343617200851,
+    "n_pixels": 1557678
+  },
+  "coverage": {
+    "analysed_land_ha": 62110.31355004451,
+    "analysed_land_pct": 98.76909641231539,
+    "mean_valid_obs_early": 16.811511727897777,
+    "mean_valid_obs_recent": 14.641172784252792,
+    "min_valid_obs_early": 5,
+    "min_valid_obs_recent": 5
+  },
+  "areas_ha": {
+    "loss": 6355.994283237661,
+    "stable": 41436.066845565925,
+    "gain": 14318.252421240924,
+    "total": 62110.31355004451
+  },
+  "areas_pct": {
+    "loss": 10.233395904717833,
+    "stable": 66.71366553668965,
+    "gain": 23.052938558592516
+  },
+  "threshold_sensitivity": [
+    {
+      "threshold": 0.05,
+      "loss_ha": 9972.190244809666,
+      "stable_ha": 24806.161512422463,
+      "gain_ha": 27331.961792812566
+    },
+    {
+      "threshold": 0.1,
+      "loss_ha": 6355.994283237662,
+      "stable_ha": 41436.066845565925,
+      "gain_ha": 14318.252421240924
+    },
+    {
+      "threshold": 0.15,
+      "loss_ha": 4521.954238037425,
+      "stable_ha": 50501.88827840821,
+      "gain_ha": 7086.47103359869
+    }
+  ],
+  "landcover_attribution": {
+    "asset": "ESA/WorldCover/v200/2021",
+    "class_field": "remapped from Map",
+    "by_class": {
+      "tree cover": {
+        "loss_ha": 4749.623278038606,
+        "stable_ha": 30947.515729828523,
+        "gain_ha": 10234.319393304,
+        "net_ha": 5484.696115265394
+      },
+      "built-up": {
+        "loss_ha": 826.2639816794481,
+        "stable_ha": 8428.874527829614,
+        "gain_ha": 2468.1559700541657,
+        "net_ha": 1641.8919883747176
+      },
+      "grassland": {
+        "loss_ha": 483.55343997233075,
+        "stable_ha": 1469.7291053777356,
+        "gain_ha": 1332.823751981237,
+        "net_ha": 849.2703120089061
+      },
+      "bare": {
+        "loss_ha": 161.49757214959837,
+        "stable_ha": 286.41875535903034,
+        "gain_ha": 161.35890680302637,
+        "net_ha": -0.13866534657199736
+      },
+      "water": {
+        "loss_ha": 74.00580797155044,
+        "stable_ha": 192.3485905003925,
+        "gain_ha": 33.027043509832644,
+        "net_ha": -40.978764461717795
+      },
+      "cropland": {
+        "loss_ha": 56.45469204309801,
+        "stable_ha": 50.432391775081854,
+        "gain_ha": 38.505269388176416,
+        "net_ha": -17.94942265492159
+      },
+      "shrubland": {
+        "loss_ha": 3.3568393951416016,
+        "stable_ha": 59.46915680655686,
+        "gain_ha": 48.75326465247061,
+        "net_ha": 45.396425257329014
+      },
+      "wetland": {
+        "loss_ha": 1.238671987915039,
+        "stable_ha": 1.2785880889892578,
+        "gain_ha": 1.3088215480071423,
+        "net_ha": 0.07014956009210338
+      }
+    },
+    "note": "WorldCover 2021 is a static map from the middle of the study period, so classes describe the land around 2021, not its 2019 state. Tree plantations fall under 'tree cover', so this cannot separate estate from natural forest."
+  },
+  "net_vegetation_area_change_ha": 7962.258138003263
+}

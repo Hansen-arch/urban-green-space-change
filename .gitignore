@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Large, regenerable rasters (run src/run_analysis.py to rebuild)
+outputs/data/*.tif

@@ -141,6 +141,24 @@ above. What they do show is that both windows come out slightly negative against
 2016-2018 baseline, which fits the 2019 caveat further up rather than a sustained
 greening trend: a low, fire-affected 2019 inflates any comparison that starts there.
 
+## Do two sensors agree on where change happened?
+
+The headline rests on one sensor. A second opinion is available because Landsat 8/9
+reaches further back, so the same question can be asked of 2016-2018 against 2022-2024.
+Sensors, resolutions and periods differ, so the magnitudes should not match. The spatial
+pattern should.
+
+Across 182 cells of 2 km that both rasters cover, the two series correlate at Pearson
+r = 0.45 (p = 2e-10) and Spearman rho = 0.40. Cells that lost vegetation in one series
+tend to have lost it in the other. The fitted line (slope 0.76, intercept +0.033) puts
+Sentinel-2 about 0.03 NDVI higher, which is the period difference rather than a sensor
+disagreement: the annual context series already shows 2019 as a low year.
+
+This checks the pattern, not the hectare totals, and it means the loss map is not an
+artefact of one sensor's cloud handling or compositing choice.
+
+![Sensor agreement per 2 km cell](outputs/figures/fig7_sensor_agreement.png)
+
 **Urban expansion shows up as stability, not loss.** The built-up core already had low NDVI in
 2019, so converting it further registers as stable-low rather than as change. NDVI difference
 detects *change* in greenness; it does not inventory current land cover.
@@ -172,6 +190,7 @@ conda activate geo          # earthengine-api, geopandas, rasterio, matplotlib
 python src/run_analysis.py  # composites, stats, GeoTIFFs   (~4 min, needs EE auth)
 python src/make_figures.py  # the six figures
 python src/landsat_seasonality.py  # optional seasonal-window check (~2 min)
+python src/sensor_agreement.py  # optional cross-sensor check (~3 min)
 ```
 
 Requires a one-time `earthengine authenticate` and a Google Cloud project in
@@ -188,10 +207,12 @@ Requires a one-time `earthengine authenticate` and a Google Cloud project in
 | `src/landcover.py` | WorldCover loading, class coding, cross-tab parsing |
 | `src/make_figures.py` | The six figures |
 | `src/landsat_seasonality.py` | Landsat cross-sensor check of the seasonal window |
+| `src/sensor_agreement.py` | Landsat versus Sentinel-2 agreement on a 2 km grid |
 | `outputs/data/stats.json` | Every headline number, plus threshold sensitivity and attribution |
 | `outputs/data/area_summary.csv` | Loss / stable / gain areas |
 | `outputs/data/landcover_attribution.csv` | Those areas split by land-cover class |
 | `outputs/data/landsat_seasonality.csv` | Net change under two seasonal windows |
+| `outputs/data/sensor_agreement.csv` | NDVI change per cell, both sensors |
 | `outputs/data/landcover_worldcover.tif` | WorldCover classes (1–8), 20 m, EPSG:32647 |
 | `outputs/data/ndvi_composites.tif` | NDVI for both periods, 20 m, EPSG:32647 |
 | `outputs/data/ndvi_change.tif` | ΔNDVI plus the `analysis_mask` band |
